@@ -1,16 +1,16 @@
 import React from 'react';
+import FilmPoster from './FilmPoster';
 
 const FilmRow = props => {
-  let posterUrl = props.film.poster_path;
   let title = props.film.title;
-  let year = props.film.release_date.split('-')[0];
+  let releaseDate = new Date(props.film.release_date).getFullYear();
   return (
     <div className="film-row">
-      <img src={posterUrl} alt="" />
+      <FilmPoster film={props.film} />
 
       <div className="film-summary">
         <h1>{title}</h1>
-        <p>{year}</p>
+        <p>{releaseDate}</p>
       </div>
     </div>
   )
