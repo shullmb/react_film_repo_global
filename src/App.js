@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import FilmList from './FilmList';
+import FilmListing from './FilmListing';
 import FilmDetails from './FilmDetails';
+import TMDB from './TMDB';
 
 class App extends Component {
   render() {
     return (
       <div className="film-library">
-        <FilmList />
-        <FilmDetails />
+        <FilmListing films={TMDB.films}/>
+        <FilmDetails details={TMDB.films}/>
       </div>
     );
   }
