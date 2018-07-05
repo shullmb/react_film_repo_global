@@ -4,6 +4,7 @@ import FilmRow from './FilmRow';
 class FilmListing extends Component {
   constructor(props) {
     super(props)
+    this.handleFilterClick = this.handleFilterClick.bind(this)
   }
 
   handleFilterClick(filter) {
