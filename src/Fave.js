@@ -9,7 +9,6 @@ class Fave extends Component {
     console.log('handling yer clickens...')
   }
 
-
   render() {
     return(
       <div className="film-row-fave add_to_queue"
