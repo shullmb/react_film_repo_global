@@ -3,7 +3,7 @@ import FilmRow from './FilmRow';
 
 class FilmListing extends Component {
   render() {
-    let allFilms = this.props.films.map( (film) => {
+    const allFilms = this.props.films.map( film => {
       return (
         <FilmRow film={film} key={film.id}/>
       )
@@ -12,7 +12,7 @@ class FilmListing extends Component {
     return (
       <div className="film-list">
         <h1 className="section-title">FILMS</h1>
-          {allFilms};
+        {allFilms};
       </div>
     );
   }  
