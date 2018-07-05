@@ -7,12 +7,17 @@ class FilmRow extends Component {
     super(props)
   }
 
+  handleDetailsClick(film) {
+    console.log('Getting details for ', film, '...');
+  }
+
   render() {
     const film = this.props.film
     const title = this.props.film.title;
     const year = new Date(this.props.film.release_date).getFullYear();
     return (
-      <div className="film-row">
+      <div className="film-row"
+           onClick={ () => this.handleDetailsClick({film})}>
         <FilmPoster film={film} />
   
         <div className="film-summary">
