@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import FilmPoster from './FilmPoster';
 
-const FilmRow = props => {
-  const title = props.film.title;
-  const year = new Date(props.film.release_date).getFullYear();
-  return (
-    <div className="film-row">
-      <FilmPoster film={props.film} />
+class FilmRow extends Component {
+  constructor(props) {
+    super(props)
+  }
 
-      <div className="film-summary">
-        <h1>{title}</h1>
-        <p>{year}</p>
+  render() {
+    const film = this.props.film
+    const title = this.props.film.title;
+    const year = new Date(this.props.film.release_date).getFullYear();
+    return (
+      <div className="film-row">
+        <FilmPoster film={film} />
+  
+        <div className="film-summary">
+          <h1>{title}</h1>
+          <p>{year}</p>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default FilmRow;
