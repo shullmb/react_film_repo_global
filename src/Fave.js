@@ -15,7 +15,7 @@ class Fave extends Component {
     this.setState({
       isFave: !isFave
     })
-    console.log('handling yer clickens...', isFave)
+    console.log('handling yer clickens...', !isFave)
   }
 
   render() {
@@ -25,7 +25,7 @@ class Fave extends Component {
       <div className={classList}
            onClick={this.handleClick}
       >
-        <p className="material-icons">add_to_queue</p>
+        <p className="material-icons">{isFave}</p>
       </div>
     )
   }

@@ -25,26 +25,19 @@ class FilmListing extends Component {
       )
     })
 
-    let allIsActive;
-    let faveIsActive;
-    if (this.state.filter === 'all') {
-      allIsActive = 'is-active'
-      faveIsActive = ''
-    } else {
-      faveIsActive = 'is-active'
-      allIsActive = ''
-    }
+    let filterAll = this.state.filter === 'all' ? 'film-list-filter is-active' : 'film-list-filter'
+    let filterFaves = this.state.filter === 'faves' ? 'film-list-filter is-active' : 'film-list-filter'
     
     return (
       <div className="film-list">
         <h1 className="section-title">FILMS</h1>
         <div className="film-list-filters">
-          <div className={`film-list-filter ${allIsActive}`}
+          <div className={filterAll}
                onClick={ () => {this.handleFilterClick('all')}}>
                 ALL
             <span className="section-count">{this.props.films.length}</span>
           </div>
-          <div className={`film-list-filter ${faveIsActive}`}
+          <div className={filterFaves}
                onClick={ () => {this.handleFilterClick('faves')}}>
                 FAVES
             <span className="section-count">0</span>

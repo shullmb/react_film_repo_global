@@ -9,7 +9,7 @@ class FilmRow extends Component {
   }
 
   handleDetailsClick(film) {
-    console.log('Getting details for ', film, '...');
+    console.log('Getting details for', film.film.title, '...');
   }
 
   render() {
