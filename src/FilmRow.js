@@ -5,11 +5,6 @@ import Fave from './Fave'
 class FilmRow extends Component {
   constructor(props) {
     super(props)
-    this.handleDetailsClick = this.handleDetailsClick.bind(this)
-  }
-
-  handleDetailsClick(film) {
-    console.log('Getting details for', film.film.title, '...');
   }
 
   render() {
@@ -25,7 +20,7 @@ class FilmRow extends Component {
           <h1>{title}</h1>
           <p>{year}</p>
         </div>
-        <Fave />
+        <Fave isFave={this.props.isFave} onFaveToggle={this.props.onFaveToggle}/>
       </div>
     )
   }

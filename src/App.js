@@ -4,11 +4,36 @@ import FilmDetails from './FilmDetails';
 import TMDB from './TMDB';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      films: TMDB.films,
+      faves: [],
+      current: {}
+    }
+    this.handleFaveToggle = this.handleFaveToggle.bind(this)
+  }
+
+  handleFaveToggle(film) {
+    console.log('toggling fave');
+    const faves = Array.from(this.state.faves);
+    const filmIndex = faves.indexOf(film)
+    filmIndex < 0 ? faves.push(film) : faves.splice(filmIndex,1) 
+    this.setState({faves})
+  }
+
+  handleDetailsClick(film) {
+    console.log('Getting details for', film.film.title, '...');
+    this.setState({
+      current: film
+    })
+  }
+
   render() {
     return (
       <div className="film-library">
-        <FilmListing films={TMDB.films}/>
-        <FilmDetails film={TMDB.films[0]}/>
+        <FilmListing films={this.state.films} faves={this.state.faves} onFaveToggle={this.handleFaveToggle}/>
+        <FilmDetails film={this.state.current} />
       </div>
     );
   }
