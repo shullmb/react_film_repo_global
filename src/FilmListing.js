@@ -22,7 +22,8 @@ class FilmListing extends Component {
     const filmList = filteredFilms.map( film => {
       return (
         <FilmRow film={film} 
-                 key={film.id} 
+                 key={film.id}
+                 onDetailsClick={() => this.props.onDetailsClick(film)} 
                  onFaveToggle={() => this.props.onFaveToggle(film)}
                  isFave={ this.props.faves.indexOf(film) > -1 ? true : false }/>
       )
