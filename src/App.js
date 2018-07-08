@@ -25,14 +25,13 @@ class App extends Component {
   }
 
   handleDetailsClick(film) {
-    console.log('Getting details for', film, '...');
+    // console.log('Getting details for', film, '...');
     const url = `https://api.themoviedb.org/3/movie/${film.id}?api_key=${TMDB.api_key}&append_to_response=videos,images&language=en`
     axios.get(url).then((response) => {
-      console.log(response);
-    })
-    
-    this.setState({
-      current: film
+      console.log(response)
+      this.setState({
+        current: response.data
+      })
     })
   }
 
