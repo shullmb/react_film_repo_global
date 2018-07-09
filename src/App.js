@@ -32,6 +32,8 @@ class App extends Component {
       this.setState({
         current: response.data
       })
+    }).catch( (err) => {
+      console.log(err);
     })
   }
 
