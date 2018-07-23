@@ -1,22 +1,29 @@
 import React from 'react';
 import FilmPoster from './FilmPoster';
-import Fave from './Fave'
+import Fave from './Fave';
+import { FilmContext } from './FilmContext';
 
 const FilmRow = (props) => {
-  const film = props.film
-  const title = props.film.title;
-  const year = new Date(props.film.release_date).getFullYear();
   return (
-    <div className="film-row"
-          onClick={props.onDetailsClick}>
-      <FilmPoster film={film} />
-
-      <div className="film-summary">
-        <h1>{title}</h1>
-        <p>{year}</p>
-      </div>
-      <Fave isFave={props.isFave} onFaveToggle={props.onFaveToggle}/>
-    </div>
+    <FilmContext.Consumer>
+      {
+        ({changeCurrentFilm}) => {
+          const year = new Date(props.film.release_date).getFullYear();
+          return (
+            <div className="film-row"
+                  onClick={changeCurrentFilm}>
+              <FilmPoster film={props.film} />
+        
+              <div className="film-summary">
+                <h1>{props.film.title}</h1>
+                <p>{year}</p>
+              </div>
+              <Fave isFave={props.isFave} />
+            </div>
+          )
+        }
+      }
+    </FilmContext.Consumer>
   )
 }
 
