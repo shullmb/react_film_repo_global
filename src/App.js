@@ -3,11 +3,14 @@ import axios from 'axios';
 import FilmListing from './FilmListing';
 import FilmDetails from './FilmDetails';
 import TMDB from './TMDB';
+import { FilmContext } from './FilmContext';
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      changeCurrentFilm: this.handleDetailsClick,
+      toggleFavorite: this.handleFaveToggle,
       films: TMDB.films,
       faves: [],
       current: {}
@@ -39,13 +42,15 @@ class App extends Component {
 
   render() {
     return (
-      <div className="film-library">
-        <FilmListing films={this.state.films}
-                     faves={this.state.faves}
-                     onFaveToggle={this.handleFaveToggle}
-                     onDetailsClick={this.handleDetailsClick}/>
-        <FilmDetails film={this.state.current} />
-      </div>
+      <FilmContext.Provider value={this.state}>
+        <div className="film-library">
+          <FilmListing films={this.state.films}
+                       faves={this.state.faves}
+                       onFaveToggle={this.handleFaveToggle}
+                       onDetailsClick={this.handleDetailsClick}/>
+          <FilmDetails film={this.state.current} />
+        </div>
+      </FilmContext.Provider>
     );
   }
 }
