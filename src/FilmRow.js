@@ -18,7 +18,7 @@ const FilmRow = (props) => {
                 <h1>{props.film.title}</h1>
                 <p>{year}</p>
               </div>
-              <Fave isFave={props.isFave} />
+              <Fave isFave={props.isFave} film={props.film} />
             </div>
           )
         }
